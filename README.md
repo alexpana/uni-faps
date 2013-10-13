@@ -1,7 +1,7 @@
-sift-features
-========================
+F.A.P.S.
+========
 
-C++ implementation of sift feature image extraction.
+Fast Analysis and Processing System is an utility framework for processing images.
 
 ## dependencies:
 Win32 opencv libs and dlls:
