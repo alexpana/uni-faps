@@ -30,7 +30,7 @@ bool collinear(const Point2f& p1, const Point2f& p2, const Point2f& p3, float e)
 	return false;
 }
 
-IplImage* ransac_circle(const Mat& src){
+IplImage* process_ransac_circle(const Mat& src){
 	// parameters
 	int t = 10;
 	float p = 0.99f;
