@@ -1,6 +1,7 @@
 #include "faps.h"
 
 #include <chrono>
+#include <sstream>
 
 #undef FLANN_DEPRECATED
 
@@ -64,4 +65,10 @@ std::vector<std::string> faps_string_split(const std::string& str_value, const s
 		token = "";
 	}
 	return result;
+}
+
+int faps_to_int(const string& string_value) {
+	int int_value;
+	istringstream(string_value) >> int_value;
+	return int_value;
 }

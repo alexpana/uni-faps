@@ -22,6 +22,8 @@ std::vector<std::string> faps_string_split(const std::string& str_value, const s
 
 void faps_wait();
 
+int faps_to_int(const std::string& string_value);
+
 template<typename ProcessFunction>
 cv::Mat faps_process_image(const std::string& processName, ProcessFunction processFunction, const cv::Mat& image){
 	cout << "Running process " << processName << endl;

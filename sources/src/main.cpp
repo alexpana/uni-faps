@@ -1,13 +1,15 @@
-#include <string>
+#include <atomic>
 #include <iostream>
 #include <map>
+#include <string>
 #include <thread>
 
 #include "faps.h"
-#include "impl_ransac_circle.h"
 #include "synchronized_queue.hpp"
-#include <atomic>
 #include "win32_helper.h"
+
+#include "impl_ransac_circle.h"
+#include "impl_hough.h"
 
 using namespace std;
 
@@ -42,13 +44,21 @@ void high_gui_refresh(){
 					OpenFileModal(filepath);
 					symbols[command_tokens[1]] = faps_open_image(filepath);
 				}
-
 				if (command_tokens[0] == "show") {
 					faps_display_image(command_tokens[1], symbols[command_tokens[1]]);
 				}
 
 				if (command_tokens[0] == "hough") {
-					// todo
+					if (command_tokens.size() < 3){
+						cout << "Missing arguments." << endl;
+					} else {
+						int peak_window_size = faps_to_int(command_tokens[2]);
+						int peak_threshold = 180;
+						if (command_tokens.size() == 4){
+							peak_threshold = faps_to_int(command_tokens[3]);
+						}
+						process_hough(symbols[command_tokens[1]], peak_window_size, peak_threshold);
+					}
 				}
 
 				if (command_tokens[0] == "ransac") {
